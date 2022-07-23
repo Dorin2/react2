@@ -8,13 +8,13 @@ const PostListItem = () =>{
 
             </span>
             <div className="d-flex justify-content-center align-items-center">
-                <button className="btn-star btn-sm">
-                    <i className="fa fa-start"></i>
+                <button type = "button"className="btn-star btn-sm">
+                    <i className="fa fa-star"></i>
                 </button>
-                <button className="btn-trash btn-sm">
+                <button type = "button"className="btn-trash btn-sm">
                     <i className="fa fa-trash-o"></i>
                 </button>
-                <i className="fa fa-heart"></i>
+                <i className="fa fa-heart" aria-hidden="true"></i>
 
             </div>
 
