@@ -14,6 +14,7 @@ export default class PostListItem extends Component{
     }
 
     onImportant(){
+        
         this.setState(({important})=>({
             important:!important
         }))
