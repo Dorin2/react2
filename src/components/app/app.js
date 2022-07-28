@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
@@ -18,27 +18,49 @@ const AppBlock = styled.div`
 
 `
 
+export default class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+             data: [
+                {label: 'Going to learn React', important: true, id: 'qda'},
+                {label: 'That is so good', important: false, id: 'sac'},
+                {label: 'I need a joob..', important: false, id: 'dtt'}
+            ]
+        };
+        this.deleteItem = this.deleteItem.bind(this);
+    }
+    deleteItem(id){
+        this.setState(({data})=>{
+            const index = data.findIndex(elem => elem.id === id)
+            
+            const before = data.slice(0, index);
+            const after = data.slice(index + 1);
 
-const App = () =>{
+            const newArr = [...before, ...after];
 
-    const data = [
-        {label: 'Going to learn React', important: true, id: 'qda'},
-        {label: 'That is so good', important: false, id: 'sac'},
-        {label: 'I need a joob..', important: false, id: 'dtt'}
-    ];
-    return(
-        <AppBlock>
-                <AppHeader/>
-            <div className='search-panel d-flex'>
-                <SearchPanel/>
-                <PostStatusFilter/>
-            </div>
-            <PostList posts ={data}/>
-            <PostAddForm/>
-        </AppBlock>
-        
-    )
+            return{ 
+                data:newArr
+            }
+
+        })
+    }
+    render(){
+        return(
+            <AppBlock>
+                    <AppHeader/>
+                <div className='search-panel d-flex'>
+                    <SearchPanel/>
+                    <PostStatusFilter/>
+                </div>
+                <PostList 
+                posts ={this.state.data}
+                onDelete ={this.deleteItem}/>
+                <PostAddForm/>
+            </AppBlock>
+            
+        )
+    }
     
 }
 
-export default App;
