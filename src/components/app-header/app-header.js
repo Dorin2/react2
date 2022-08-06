@@ -1,25 +1,14 @@
 import React from 'react';
 import './app-header.css';
-import styled from 'styled-components';
 
 
-const Header =styled.div`
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    h1  {
-        font-size: 26px;
-        :hover {
-            color: red;
-        }
-    }
-`
-const AppHeader = () =>{
+
+const AppHeader = ({liked, allPosts}) =>{
     return (
-        <Header>
-            <h1>Dorin Ghetus</h1>
-            <h2>5 post, likes 0</h2>
-        </Header>
+        <div className='app-header d-flex'>
+            <h1> Dorin Ghetus</h1>
+            <h2> {allPosts} post, liked {liked}</h2>
+        </div>
     )
 }
 
